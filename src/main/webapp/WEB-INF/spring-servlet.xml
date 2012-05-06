@@ -14,5 +14,5 @@
 	<bean id="documentationController" class="com.mangofactory.swagger.springmvc.controller.DocumentationController"
 		p:apiVersion="1.0"
 		p:swaggerVersion="1.0"
-		p:basePath="http://localhost:8080/swagger-springmvc-test/apidoc" />
+		p:basePath="http://localhost:8080/swagger-springmvc-test/" />
 </beans>
