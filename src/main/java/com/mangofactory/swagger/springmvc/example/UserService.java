@@ -1,17 +1,16 @@
 package com.mangofactory.swagger.springmvc.example;
 
-import java.util.List;
-
+import com.google.common.collect.Lists;
+import com.mangofactory.swagger.annotations.ApiError;
+import com.mangofactory.swagger.annotations.ApiErrors;
+import com.wordnik.swagger.annotations.Api;
+import com.wordnik.swagger.annotations.ApiOperation;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import com.google.common.collect.Lists;
-import com.mangofactory.swagger.ApiError;
-import com.mangofactory.swagger.ApiErrors;
-import com.wordnik.swagger.annotations.Api;
-import com.wordnik.swagger.annotations.ApiOperation;
+import java.util.List;
 
 @Controller
 @RequestMapping("/users")

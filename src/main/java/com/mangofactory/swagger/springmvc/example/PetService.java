@@ -1,7 +1,13 @@
 package com.mangofactory.swagger.springmvc.example;
 
-import java.util.List;
-
+import com.google.common.collect.Lists;
+import com.mangofactory.swagger.annotations.ApiError;
+import com.mangofactory.swagger.annotations.ApiErrors;
+import com.mangofactory.swagger.annotations.ApiModel;
+import com.wordnik.swagger.annotations.Api;
+import com.wordnik.swagger.annotations.ApiOperation;
+import com.wordnik.swagger.annotations.ApiParam;
+import com.wordnik.swagger.sample.exception.NotFoundException;
 import org.apache.commons.lang.NotImplementedException;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -11,13 +17,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import com.google.common.collect.Lists;
-import com.mangofactory.swagger.ApiError;
-import com.mangofactory.swagger.ApiErrors;
-import com.wordnik.swagger.annotations.Api;
-import com.wordnik.swagger.annotations.ApiOperation;
-import com.wordnik.swagger.annotations.ApiParam;
-import com.wordnik.swagger.sample.exception.NotFoundException;
+import java.util.List;
 
 @Controller
 @RequestMapping("/pets")
@@ -76,4 +76,11 @@ public class PetService {
 			@ApiParam(value = "Tags to filter by", required = true, allowMultiple = true) @RequestParam("tags") String tags) {
 		throw new NotImplementedException();
 	}
+
+
+    @RequestMapping(value="/contrivedPetLookupExample", method=RequestMethod.POST)
+    @ApiModel(type = Pet.class, collection = true)
+    public List<Pet> contrivedPetLookupExample(@ApiModel(type = Pet.class) Pet pet) {
+        throw new NotImplementedException();
+    }
 }
