@@ -27,5 +27,10 @@
                 </property>
             </bean>
         </property>
+        <property name="excludedResources">
+            <list>
+                <value>/users</value>
+            </list>
+        </property>
     </bean>
 </beans>
