@@ -11,18 +11,21 @@
 	<mvc:default-servlet-handler/>
     <context:component-scan base-package="com.mangofactory.swagger.springmvc.example" />
     <bean id="documentationController" class="com.mangofactory.swagger.spring.controller.DocumentationController" />
-    <context:component-scan base-package="com.mangofactory.swagger.spring.controller" use-default-filters="false">
+    <context:component-scan base-package="com.mangofactory.swagger.spring.controller">
         <context:include-filter type="annotation" expression="org.springframework.stereotype.Controller"/>
     </context:component-scan>
+    <bean id="documentationSchemaProvider" class="com.mangofactory.swagger.models.DocumentationSchemaProvider" />
+    <bean id="schemaDescriptor" class="com.mangofactory.swagger.models.Jackson2SchemaDescriptor" >
+        <constructor-arg name="objectMapper" ref="localObjectMapper"/>
+    </bean>
     <bean id="swaggerConfiguration" class="com.mangofactory.swagger.SwaggerConfiguration">
         <property name="basePath" value="http://localhost:8080/swagger-springmvc-test"/>
         <property name="extensions">
             <bean class="com.mangofactory.swagger.SwaggerConfigurationExtension" >
                 <property name="ignorableParameterTypes">
                     <list>
-                        <bean id="myClass" class="java.lang.Class" factory-method="forName">
-                            <constructor-arg value="org.springframework.web.util.UriComponentsBuilder"/>
-                        </bean>
+                        <value type="java.lang.Class">org.springframework.http.ResponseEntity</value>
+                        <value type="java.lang.Class">org.springframework.web.util.UriComponentsBuilder</value>
                     </list>
                 </property>
             </bean>
@@ -33,4 +36,5 @@
             </list>
         </property>
     </bean>
+    <bean id="localObjectMapper" class="com.fasterxml.jackson.databind.ObjectMapper"/>
 </beans>

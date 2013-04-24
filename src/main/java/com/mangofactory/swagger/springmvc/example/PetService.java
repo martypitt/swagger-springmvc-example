@@ -26,6 +26,7 @@ public class PetService {
 
 	@RequestMapping(method=RequestMethod.GET)
 	@ApiOperation(value = "List all pets")
+    //@ApiModel(type = Pet.class, collection = true)
 	public @ResponseBody List<Pet> listPets()
 	{
 		return Lists.newArrayList();
@@ -46,7 +47,7 @@ public class PetService {
 	@ApiOperation(value = "Add a new pet to the store")
 	@ApiErrors(errors = { @ApiError(code = 405, reason = "Invalid input") })
 	public void addPet(
-			@ApiParam(value = "Pet object that needs to be added to the store", required = true) Pet pet) {
+			@ApiParam(value = "Pet object that needs to be added to the store", required = true) @RequestBody Pet pet) {
 		throw new NotImplementedException();
 	}
 
