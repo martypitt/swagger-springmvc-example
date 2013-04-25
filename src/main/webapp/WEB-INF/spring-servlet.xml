@@ -37,4 +37,5 @@
         </property>
     </bean>
     <bean id="localObjectMapper" class="com.fasterxml.jackson.databind.ObjectMapper"/>
+    <bean id="typeResolver" class="com.fasterxml.classmate.TypeResolver"/>
 </beans>
