@@ -1,41 +1,36 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
-	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xmlns:context="http://www.springframework.org/schema/context"
-	xmlns:mvc="http://www.springframework.org/schema/mvc"
-	xsi:schemaLocation="http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc-3.1.xsd
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:mvc="http://www.springframework.org/schema/mvc"
+       xsi:schemaLocation="http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc-3.1.xsd
 		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
 		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.1.xsd">
 	<mvc:annotation-driven />
 	<context:annotation-config />
 	<mvc:default-servlet-handler/>
+    <context:property-placeholder location="classpath:swagger.properties" />
     <context:component-scan base-package="com.mangofactory.swagger.springmvc.example" />
-    <bean id="documentationController" class="com.mangofactory.swagger.spring.controller.DocumentationController" />
-    <context:component-scan base-package="com.mangofactory.swagger.spring.controller">
-        <context:include-filter type="annotation" expression="org.springframework.stereotype.Controller"/>
-    </context:component-scan>
-    <bean id="documentationSchemaProvider" class="com.mangofactory.swagger.models.DocumentationSchemaProvider" />
-    <bean id="schemaDescriptor" class="com.mangofactory.swagger.models.Jackson2SchemaDescriptor" >
-        <constructor-arg name="objectMapper" ref="localObjectMapper"/>
-    </bean>
-    <bean id="swaggerConfiguration" class="com.mangofactory.swagger.SwaggerConfiguration">
-        <property name="basePath" value="http://localhost:8080/swagger-springmvc-test"/>
-        <property name="extensions">
-            <bean class="com.mangofactory.swagger.SwaggerConfigurationExtension" >
-                <property name="ignorableParameterTypes">
-                    <list>
-                        <value type="java.lang.Class">org.springframework.http.ResponseEntity</value>
-                        <value type="java.lang.Class">org.springframework.web.util.UriComponentsBuilder</value>
-                    </list>
-                </property>
-            </bean>
-        </property>
-        <property name="excludedResources">
-            <list>
-                <value>/users</value>
-            </list>
-        </property>
-    </bean>
-    <bean id="localObjectMapper" class="com.fasterxml.jackson.databind.ObjectMapper"/>
-    <bean id="typeResolver" class="com.fasterxml.classmate.TypeResolver"/>
+    <bean id="documentationConfig" class="com.mangofactory.swagger.configuration.DocumentationConfig"/>
+    <bean id="extensibilityModule" class="com.mangofactory.swagger.springmvc.example.config.ExampleExtensibilityModule"
+            />
+    <!--<bean id="swaggerConfiguration" class="com.mangofactory.swagger.SwaggerConfiguration">-->
+        <!--<property name="basePath" value="http://localhost:8080/swagger-springmvc-test"/>-->
+        <!--<property name="extensions">-->
+            <!--<bean class="com.mangofactory.swagger.SwaggerConfigurationExtension" >-->
+                <!--<property name="ignorableParameterTypes">-->
+                    <!--<list>-->
+                        <!--<value type="java.lang.Class">org.springframework.http.ResponseEntity</value>-->
+                        <!--<value type="java.lang.Class">org.springframework.web.util.UriComponentsBuilder</value>-->
+                    <!--</list>-->
+                <!--</property>-->
+            <!--</bean>-->
+        <!--</property>-->
+        <!--<property name="excludedResources">-->
+            <!--<list>-->
+                <!--<value>/users</value>-->
+            <!--</list>-->
+        <!--</property>-->
+    <!--</bean>-->
+
 </beans>
