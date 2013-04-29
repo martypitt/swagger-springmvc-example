@@ -12,25 +12,7 @@
     <context:property-placeholder location="classpath:swagger.properties" />
     <context:component-scan base-package="com.mangofactory.swagger.springmvc.example" />
     <bean id="documentationConfig" class="com.mangofactory.swagger.configuration.DocumentationConfig"/>
-    <bean id="extensibilityModule" class="com.mangofactory.swagger.springmvc.example.config.ExampleExtensibilityModule"
-            />
-    <!--<bean id="swaggerConfiguration" class="com.mangofactory.swagger.SwaggerConfiguration">-->
-        <!--<property name="basePath" value="http://localhost:8080/swagger-springmvc-test"/>-->
-        <!--<property name="extensions">-->
-            <!--<bean class="com.mangofactory.swagger.SwaggerConfigurationExtension" >-->
-                <!--<property name="ignorableParameterTypes">-->
-                    <!--<list>-->
-                        <!--<value type="java.lang.Class">org.springframework.http.ResponseEntity</value>-->
-                        <!--<value type="java.lang.Class">org.springframework.web.util.UriComponentsBuilder</value>-->
-                    <!--</list>-->
-                <!--</property>-->
-            <!--</bean>-->
-        <!--</property>-->
-        <!--<property name="excludedResources">-->
-            <!--<list>-->
-                <!--<value>/users</value>-->
-            <!--</list>-->
-        <!--</property>-->
-    <!--</bean>-->
+    <bean id="extensibilityModule" class="com.mangofactory.swagger.springmvc.example.config.ExampleExtensibilityModule" />
+
 
 </beans>
