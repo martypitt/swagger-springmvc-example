@@ -2,17 +2,20 @@
 <beans xmlns="http://www.springframework.org/schema/beans"
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
        xmlns:context="http://www.springframework.org/schema/context"
-       xmlns:mvc="http://www.springframework.org/schema/mvc"
+       xmlns:mvc="http://www.springframework.org/schema/mvc" xmlns:util="http://www.springframework.org/schema/util"
        xsi:schemaLocation="http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc-3.1.xsd
 		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
-		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.1.xsd">
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.1.xsd http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util.xsd">
 	<mvc:annotation-driven />
 	<context:annotation-config />
 	<mvc:default-servlet-handler/>
     <context:property-placeholder location="classpath:swagger.properties" />
     <context:component-scan base-package="com.mangofactory.swagger.springmvc.example" />
+    <util:list id="customSchemaGenerators" value-type="com.mangofactory.swagger.models.CustomSchemaGenerator" >
+        <bean class="com.mangofactory.swagger.springmvc.example.BigDecimalSchemaGenerator" />
+        <bean class="com.mangofactory.swagger.springmvc.example.JodaLocalDateSchemaGenerator" />
+    </util:list>
     <bean id="documentationConfig" class="com.mangofactory.swagger.configuration.DocumentationConfig"/>
     <bean id="extensibilityModule" class="com.mangofactory.swagger.springmvc.example.config.ExampleExtensibilityModule" />
-
 
 </beans>

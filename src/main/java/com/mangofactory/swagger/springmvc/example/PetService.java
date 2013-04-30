@@ -9,6 +9,7 @@ import com.wordnik.swagger.annotations.ApiOperation;
 import com.wordnik.swagger.annotations.ApiParam;
 import com.wordnik.swagger.sample.exception.NotFoundException;
 import org.apache.commons.lang.NotImplementedException;
+import org.springframework.http.HttpEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -82,6 +83,12 @@ public class PetService {
     @RequestMapping(value="/contrivedPetLookupExample", method=RequestMethod.POST)
     @ApiModel(type = Pet.class, collection = true)
     public List<Pet> contrivedPetLookupExample(@ApiModel(type = Pet.class) Pet pet) {
+        throw new NotImplementedException();
+    }
+
+
+    @RequestMapping(value="/{name}", method=RequestMethod.POST)
+    public HttpEntity<Pet> petEntity(@PathVariable String name) {
         throw new NotImplementedException();
     }
 }
