@@ -11,10 +11,6 @@
 	<mvc:default-servlet-handler/>
     <context:property-placeholder location="classpath:swagger.properties" />
     <context:component-scan base-package="com.mangofactory.swagger.springmvc.example" />
-    <util:list id="customSchemaGenerators" value-type="com.mangofactory.swagger.models.CustomSchemaGenerator" >
-        <bean class="com.mangofactory.swagger.springmvc.example.BigDecimalSchemaGenerator" />
-        <bean class="com.mangofactory.swagger.springmvc.example.JodaLocalDateSchemaGenerator" />
-    </util:list>
     <bean id="documentationConfig" class="com.mangofactory.swagger.configuration.DocumentationConfig"/>
     <bean id="extensibilityModule" class="com.mangofactory.swagger.springmvc.example.config.ExampleExtensibilityModule" />
 
