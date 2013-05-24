@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.util.UriComponentsBuilder;
 
 import java.math.BigDecimal;
+import java.util.Collection;
 
 @Controller
 @RequestMapping("api/examples")
@@ -20,6 +21,12 @@ public class ExampleServiceController {
     public ResponseEntity<Example> getEffective(UriComponentsBuilder builder) {
         return new ResponseEntity<Example>(new Example("Hello", 1, Baz.ONE, new Camp("test")), HttpStatus.OK);
     }
+//
+//    @RequestMapping(value = "/effectives", method = RequestMethod.GET)
+//    private ResponseEntity<List<Example>> getEffectives() {
+//        return new ResponseEntity<List<Example>>(newArrayList(new Example("Hello", 1, Baz.ONE, new Camp("test"))),
+//                HttpStatus.OK);
+//    }
 
     @RequestMapping(value = "/effective", method = RequestMethod.POST)
     public void getBare(Example example) {
@@ -28,6 +35,12 @@ public class ExampleServiceController {
 
     @RequestMapping(value = "/status", method = RequestMethod.POST)
     public void updateBaz(Baz baz) {
+        //No-op
+    }
+
+
+    @RequestMapping(value = "/statuses", method = RequestMethod.POST)
+    public void updateBazes(Collection<Baz> baz) {
         //No-op
     }
 
