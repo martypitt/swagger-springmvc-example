@@ -5,6 +5,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.mangofactory.swagger.configuration.ExtensibilityModule;
 import com.mangofactory.swagger.models.AlternateTypeProcessingRule;
 import com.mangofactory.swagger.models.TypeProcessingRule;
+import com.mangofactory.swagger.springmvc.example.Pet;
 import org.joda.time.LocalDate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpHeaders;
@@ -15,6 +16,7 @@ import java.net.URI;
 import java.util.Date;
 import java.util.List;
 
+import static com.mangofactory.swagger.models.AlternateTypeProcessingRule.*;
 import static com.mangofactory.swagger.models.IgnorableTypeRule.*;
 
 public class ExampleExtensibilityModule extends ExtensibilityModule {
@@ -32,6 +34,7 @@ public class ExampleExtensibilityModule extends ExtensibilityModule {
         rules.add(ignorable(UriComponentsBuilder.class));
         rules.add(new AlternateTypeProcessingRule(BigDecimal.class, Double.class));
         rules.add(new AlternateTypeProcessingRule(LocalDate.class, Date.class));
+        rules.add(hashmapAlternate(String.class, Pet.class));
     }
 
     private class HttpHeadersMixin {

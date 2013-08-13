@@ -19,6 +19,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import java.util.List;
+import java.util.Map;
 
 @Controller
 @RequestMapping("/pets")
@@ -89,6 +90,37 @@ public class PetService {
 
     @RequestMapping(value="/{name}", method=RequestMethod.POST)
     public HttpEntity<Pet> petEntity(@PathVariable String name) {
+        throw new NotImplementedException();
+    }
+
+    @RequestMapping(value="/nameMapSpecific", method=RequestMethod.POST)
+    @ApiModel(type = Pet.class, collection = true)
+    public Map<String, Pet> nameMapSpecific(Map<String, Pet> someInput) {
+        throw new NotImplementedException();
+    }
+
+    @RequestMapping(value="/nameMapAny", method=RequestMethod.POST)
+    @ApiModel(type = Pet.class, collection = true)
+    public Map<String, Object> nameMapAny(Map<String, Pet> someInput) {
+        throw new NotImplementedException();
+    }
+
+    @RequestMapping(value="/nameMapObjects", method=RequestMethod.POST)
+    @ApiModel(type = Pet.class, collection = true)
+    public Map<Object, Object> nameMapObjects(Map<String, Pet> someInput) {
+        throw new NotImplementedException();
+    }
+
+
+    @RequestMapping(value="/nameMapObjectsNonGeneric", method=RequestMethod.POST)
+    @ApiModel(type = Pet.class, collection = true)
+    public Map nameMapObjectsNonGeneric(Map<String, Pet> someInput) {
+        throw new NotImplementedException();
+    }
+
+
+    @RequestMapping(value="byName/{name}", method=RequestMethod.POST)
+    public HttpEntity<List<Pet>> petEntities(@PathVariable String name) {
         throw new NotImplementedException();
     }
 }
