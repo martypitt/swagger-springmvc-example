@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.multipart.MultipartFile;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -129,6 +130,11 @@ public class PetService {
 
     @RequestMapping(value="{a}/{b}", method= RequestMethod.GET)
     public ResponseEntity<Void> method(@PathVariable("a") String a, @PathVariable("b") String b){
+        return new ResponseEntity<Void>(HttpStatus.OK);
+    }
+
+    @RequestMapping(value="{petId}/pic", method= RequestMethod.POST)
+    public ResponseEntity<Void> updatePic(@PathVariable String petId, MultipartFile pic){
         return new ResponseEntity<Void>(HttpStatus.OK);
     }
 }
