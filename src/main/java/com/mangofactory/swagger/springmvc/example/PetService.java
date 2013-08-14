@@ -45,7 +45,7 @@ public class PetService {
 	@ApiErrors(errors = { @ApiError(code = 400, reason = "Invalid ID supplied"),
 			@ApiError(code = 404, reason = "Pet not found") })
 	public Pet getPetById (
-			@ApiParam(value = "ID of pet that needs to be fetched",  allowableValues = "range[1,5]", required = true) @PathVariable("petId") String petId) 
+			@ApiParam(value = "ID of pet that needs to be fetched",  allowableValues = "range[1,5]", required = true) @PathVariable("petId") String petId)
 	throws NotFoundException {
 		throw new NotImplementedException();
 	}
@@ -135,6 +135,11 @@ public class PetService {
 
     @RequestMapping(value="{petId}/pic", method= RequestMethod.POST)
     public ResponseEntity<Void> updatePic(@PathVariable String petId, MultipartFile pic){
+        return new ResponseEntity<Void>(HttpStatus.OK);
+    }
+
+    @RequestMapping(value="{petId}/pic/{picId}", method= RequestMethod.GET)
+    public ResponseEntity<Void> updatePic(@PathVariable String petId, @PathVariable String picId){
         return new ResponseEntity<Void>(HttpStatus.OK);
     }
 }
