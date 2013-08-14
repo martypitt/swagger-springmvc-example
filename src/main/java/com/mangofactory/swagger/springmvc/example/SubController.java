@@ -21,6 +21,12 @@ public class SubController extends BaseController<FancyPet> {
         return id;
     }
 
+
+    @RequestMapping(method = RequestMethod.PUT)
+    public <T extends Pet> void updatePet(@RequestBody T pet) {
+        throw new UnsupportedOperationException();
+    }
+
     // overload one of superclass
     public @ResponseBody
     @RequestMapping(method= RequestMethod.POST, value = "?{someId}")
