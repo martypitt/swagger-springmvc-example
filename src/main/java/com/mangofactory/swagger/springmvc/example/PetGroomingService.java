@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
-@RequestMapping({"/petgrooming", "/pets/grooming"})
+@RequestMapping({"/petgrooming", "/pets/grooming", "/pets"})
 @Api(value="", description="Grooming operations for pets")
 public class PetGroomingService {
 

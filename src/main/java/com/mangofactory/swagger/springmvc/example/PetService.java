@@ -123,6 +123,12 @@ public class PetService {
         throw new NotImplementedException();
     }
 
+//    @RequestMapping(value="/genericList", method=RequestMethod.POST)
+//    @ApiModel(type = Pet.class, collection = true)
+//    public Map<String, List<String>> genericList() {
+//        throw new NotImplementedException();
+//    }
+
     @RequestMapping(value="byName/{name}", method=RequestMethod.POST)
     public HttpEntity<List<Pet>> petEntities(@PathVariable String name) {
         return new ResponseEntity<List<Pet>>(new ArrayList<Pet>(), HttpStatus.OK);
