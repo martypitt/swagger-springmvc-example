@@ -10,6 +10,9 @@ import org.springframework.web.util.UriComponentsBuilder;
 
 import java.math.BigDecimal;
 import java.util.Collection;
+import java.util.List;
+
+import static com.google.common.collect.Lists.newArrayList;
 
 @Controller
 @RequestMapping("api/examples")
@@ -21,12 +24,12 @@ public class ExampleServiceController {
     public ResponseEntity<Example> getEffective(UriComponentsBuilder builder) {
         return new ResponseEntity<Example>(new Example("Hello", 1, Baz.ONE, new Camp("test")), HttpStatus.OK);
     }
-//
-//    @RequestMapping(value = "/effectives", method = RequestMethod.GET)
-//    private ResponseEntity<List<Example>> getEffectives() {
-//        return new ResponseEntity<List<Example>>(newArrayList(new Example("Hello", 1, Baz.ONE, new Camp("test"))),
-//                HttpStatus.OK);
-//    }
+
+    @RequestMapping(value = "/effectives", method = RequestMethod.GET)
+    private ResponseEntity<List<Example>> getEffectives() {
+        return new ResponseEntity<List<Example>>(newArrayList(new Example("Hello", 1, Baz.ONE, new Camp("test"))),
+                HttpStatus.OK);
+    }
 
     @RequestMapping(value = "/effective", method = RequestMethod.POST)
     public void getBare(Example example) {
