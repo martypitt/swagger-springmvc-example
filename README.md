@@ -8,7 +8,7 @@
 mvn jetty:run
 ```
 
-#### Go to http://localhost:8080/swagger-springmvc-test/index.html
+#### Go to http://localhost:8080/swagger-springmvc-test/usage/index.html
 
 The textfield should be filled with `http://localhost:8080/swagger-springmvc-test/api-docs` 
 
