@@ -8,6 +8,7 @@ import com.mangofactory.swagger.models.AlternateTypeProcessingRule;
 import com.mangofactory.swagger.models.TypeProcessingRule;
 import com.mangofactory.swagger.models.WildcardType;
 import com.mangofactory.swagger.springmvc.example.Pet;
+import org.joda.time.DateTime;
 import org.joda.time.LocalDate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpHeaders;
@@ -16,7 +17,6 @@ import org.springframework.web.util.UriComponentsBuilder;
 
 import java.math.BigDecimal;
 import java.net.URI;
-import java.util.Date;
 import java.util.List;
 
 import static com.mangofactory.swagger.models.AlternateTypeProcessingRule.*;
@@ -36,7 +36,8 @@ public class ExampleExtensibilityModule extends ExtensibilityModule {
     protected void customizeTypeProcessingRules(List<TypeProcessingRule> rules) {
         rules.add(ignorable(UriComponentsBuilder.class));
         rules.add(new AlternateTypeProcessingRule(BigDecimal.class, Double.class));
-        rules.add(new AlternateTypeProcessingRule(LocalDate.class, Date.class));
+        rules.add(new AlternateTypeProcessingRule(LocalDate.class, String.class));
+        rules.add(new AlternateTypeProcessingRule(DateTime.class, String.class));
         rules.add(responseEntity());
         rules.add(hashmapAlternate(String.class, Pet.class));
     }

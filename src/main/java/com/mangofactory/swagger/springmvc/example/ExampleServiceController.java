@@ -1,5 +1,6 @@
 package com.mangofactory.swagger.springmvc.example;
 
+import org.joda.time.DateTime;
 import org.joda.time.LocalDate;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -12,7 +13,7 @@ import java.math.BigDecimal;
 import java.util.Collection;
 import java.util.List;
 
-import static com.google.common.collect.Lists.newArrayList;
+import static com.google.common.collect.Lists.*;
 
 @Controller
 @RequestMapping("api/examples")
@@ -55,6 +56,11 @@ public class ExampleServiceController {
     @RequestMapping(value = "/bigDecimal", method = RequestMethod.POST)
     public void updateBigDecimal(BigDecimal input) {
         //No-op
+    }
+
+    @RequestMapping(value = "/datetime", method = RequestMethod.POST)
+    public DateTime updateDateTime(LocalDate localDate) {
+        throw new UnsupportedOperationException();
     }
 
 }
