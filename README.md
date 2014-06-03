@@ -1,3 +1,5 @@
+# IMPORTANT! This project is no longer being maintained. Please look at the more recently [updated demo site](https://github.com/adrianbk/swagger-springmvc-demo) that supports 0.8.x and beyond
+
 ## Before you begin
 
 [swagger-springmvc](https://github.com/martypitt/swagger-springmvc) must be installed in your local maven repository.
